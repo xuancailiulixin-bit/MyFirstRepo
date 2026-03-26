@@ -22,8 +22,8 @@ int main()
     struct Person
     {
         char *name;
-        int age;
         char *id;
+        int age;    //内存对齐
     };
     
     struct Person person;
