@@ -26,6 +26,14 @@ int Judge_Endian()
     */
 }
 
+int Judge_Endian_pv()
+{
+    short a = 0x1000;
+    char *p = (char *)&a;
+    return p[0] == 1;
+
+}
+
 int main()
 {
     if(Judge_Endian())
@@ -35,7 +43,13 @@ int main()
         {
             printf("大端序\n");
         }
-
+    if (Judge_Endian_pv())
+    {
+        printf("大端序\n");
+    }else
+    {
+        printf("小端序\n");
+    }
     
     return 0;
 }
