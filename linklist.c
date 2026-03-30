@@ -76,11 +76,43 @@ void Destory_Linklist(Node **head)
     *head = NULL;
 }
 
+//定义插入节点的函数
+void Insert_Node(Node **head,int value,int index)
+{
+    if(head == NULL || index < 0) return;      //插入位置index=0时，说明插入到头节点前面
+    Node *new_node = Create_Node(value);
+    if(index == 0)
+    {
+        new_node->next = *head;
+        *head = new_node;
+    }else if(*head == NULL)
+    {
+        *head = Create_Node(0);           //如果传入的是空指针，先创建一个值为0的节点
+
+    }
+    Node *current = *head;
+    while(index > 1)
+    {
+        if(current->next == NULL)
+        {
+            current->next = Create_Node(0);     
+          
+        }
+        current = current->next;            //如果链表中的成员数量保证能够插入就不会执行if，如果链表成员个数不足或者只有一个成员，就会执行if创建值为0的节点直到能够插入到对应位置
+        index--;
+    }
+    new_node->next = current->next;         //最终current指向的是要插入位置的前一个位置的成员，这样才能插入
+    current->next = new_node;
+     
+}
+
 
 int main()
 {
     int array[] = {0,1,2,3,4};
     Node *head = Create_Linklist(array,5);
+    Insert_Node(&head,5,5);
+    Insert_Node(&head,6,6);
     Print_Linklist(head);
     Destory_Linklist(&head);
     printf("%p\n",head);
