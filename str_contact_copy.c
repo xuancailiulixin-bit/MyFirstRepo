@@ -45,7 +45,7 @@ int main()
     size是dest指向的目标缓冲区的总大小，建议使用sizeof(dest)作为size的大小，
     因为如果size > 0，strlcpy()会从src复制最多size - 1个字符到dest，并且总是会把dest[sizeof(dest) - 1]的字符设置成'\0'，以确保是一个以'\0'结尾的字符串
     如果size = 0，函数不会执行任何复制，直接返回strlen(src)
-    strlcpy()不会像strncpy()那样用'\0'填充，也就是说如果size = sizeof(dest) && size > strlen(src)，那么dest[0]到dest[strlen(dest)]之外的部分都会保持原样
+    strlcpy()不会像strncpy()那样用'\0'填充，也就是说如果size = sizeof(dest) && size > strlen(src)，那么dest[0]到dest[strlen(src)]之外的部分都会保持原样
 
     */
     char text[22] = "hello "; 
