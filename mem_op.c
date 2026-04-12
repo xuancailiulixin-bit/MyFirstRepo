@@ -4,7 +4,7 @@
 
 int main()
 {
-    //函数原型：void *memcpy(void *dest,const void *src,size_t n)，返回dest
+    //函数原型：void *memcpy(void * restrict dest,const void * restrict src,size_t n)，返回dest
     //dest是指向目标内存地址的指针，src是源内存地址的指针，n是要复制的字节数
     
     char str[] = "hello";           //编译器会自动计算数组大小，并且这个大小在编译时就固定下来，不能再改变
