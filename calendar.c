@@ -20,13 +20,14 @@ int main()
         功能是将一个时间戳(time_t类型)转换成本地时间(struct tm结构体)
         参数timer是指向time_t类型变量的指针，通常是time()函数返回的时间戳
         成功时返回一个指向struct tm结构体的指针，失败返回NULL
+        
         localtime()把时间戳转换成当前时区的分解时间(struct tm结构体)，追随系统的时区设置   
     */
     
     /*
         函数原型：time_t mktime(struct tm *tm);
         将本地时区的分解时间(struct tm)转换为日历时间(time_t时间戳)
-        虽然time_t时间戳表示的是从纪元开始的秒数，之所以称为日历时间是因为秒数可以转换成年、月、日、时、分、秒等日历形式的时间，二来是与另一种时间概念——clock_t处理器时间区分
+        虽然time_t时间戳表示的是从纪元开始的秒数，之所以称为日历时间是因为秒数可以转换成年、月、日、时、分、秒等日历形式的时间，二来是与另一种时间概念——clock_t处理器时间进行区分
     
         mktime()把struct tm结构体转换成time_t,相当于是localtime()的逆操作
         mktime()还会自动调整struct tm里超出范围的字段，比如tm_sec = 70,超出了60的最大范围会自动调整：tm_sec -= 60;tm_min += 1;
