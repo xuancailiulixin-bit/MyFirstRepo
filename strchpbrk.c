@@ -36,5 +36,25 @@ int main()
     remain = strstr(str,"nihao");
     printf("%ld\n",remain-str);
     printf("%s\n",remain);
+
+    //利用strpbrk()实现strtok()
+    char str2[] = "apple,banana;orange,grape";
+    char *token = str2;
+    char *next;
+
+    while((next = strpbrk(token,",;")) != NULL)     //返回NULL说明没有找到要找的字符
+    {
+        *next = '\0';       //用字符串结束符替换分隔符
+        printf("%s\n",token);
+        token = next + 1;
+    }
+    printf("%s\n",token);     //最后一个
+
+
+
+
+
+
+
     return 0;
 }
