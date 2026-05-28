@@ -61,6 +61,8 @@ int main()
 
     printf("hello ");
     //fflush(stdout);
+        //写缓冲区里的内容是需要经过操作系统的，操作系统把写缓冲区里的内容批量写入到文件
+        //函数fflush()的功能是立刻触发系统调用write()，将用户缓冲区的数据转移到操作系统内核
     sleep(2);
     printf("world!\n");             //因为printf()使用的是行缓冲，运行程序会发现并不会直接打印出"hello "，而是先等待两秒，再一起打印出"hello world!"
     
