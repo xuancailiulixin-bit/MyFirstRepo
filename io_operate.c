@@ -1,5 +1,25 @@
 #include<stdio.h>
 
+void Echo()
+{
+    while(1)
+    {   
+        int next_input = getchar();
+        if(next_input == EOF)           //键盘上并没有EOF这个按键，在绝大部分操作系统上，EOF是由组合键Ctrl + D触发的，在Windows命令行上由Ctrl + Z（然后按回车）触发，
+                                        //对于标准流stdin来说，EOF不再仅表示数据已经读完了，还意味着“用户告诉程序：我不想再继续输入了”
+        {   
+            break;
+        }
+        else if(next_input == '\n')
+        {
+            continue;
+        }
+
+        printf("%c\n",next_input);
+    }
+
+}
+
 int main()
 {
     /*
@@ -54,6 +74,6 @@ int main()
 
     */
     
-    
+    Echo();         //因为getchar()每次从stdin的缓冲区里只读取一个字符，我们可以一次输入多个字符到stdin缓冲区
     return 0;
 }
